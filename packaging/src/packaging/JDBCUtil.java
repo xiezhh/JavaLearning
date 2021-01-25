@@ -1,4 +1,5 @@
 package packaging;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.PublicKey;
@@ -9,10 +10,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JDBCUtil  {
     public static String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -24,7 +22,9 @@ public class JDBCUtil  {
     static {
         try{
             Class.forName(DRIVER);
-        }catch(ClassNotFoundException e){e.printStackTrace();}
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
     public JDBCUtil (){
@@ -224,6 +224,59 @@ public class JDBCUtil  {
         }
         return result;
     }
+
+    /**
+    * 查询多个对象，返回强类型集合
+    * @Param sql
+    * @Param args
+    * @return List<T>
+    * */
+    public static <T>List<T> queryForList(String sql,Class<T> clz,Object...args){
+        List<T> result = new ArrayList<T>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            if(args != null){
+                for(int i = 1;i < args.length;i++){
+                    ps.setObject((i+1),args[i]);
+                }
+            }
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            while(rs.next()){
+                T obj = clz.newInstance();
+                for(int i = 1;i <= columnCount;i++){
+                    String columnName = rsmd.getColumnName(i);
+                    String methodName = "set" + columnName.substring(0,1).toUpperCase() + columnName.substring(1,columnName.length());
+                    Method method[] = clz.getMethods();
+                    for(Method meth:method){
+                        if(methodName.equals(meth.getName())){
+                            meth.invoke(obj,rs.getObject(i));
+                        }
+                    }
+                }result.add(obj);
+            }
+        }catch(InstantiationException e){
+            e.printStackTrace();
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(IllegalArgumentException e){
+            e.printStackTrace();
+        }catch(InvocationTargetException e){
+            e.printStackTrace();
+        }finally{
+            close(rs,ps,con);
+        }
+        return result;
+    }
+
+
 
 
 
