@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HelloWorld/HelloWorld.iml" filepath="$PROJECT_DIR$/HelloWorld/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MakeIt.iml" filepath="$PROJECT_DIR$/MakeIt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PMIS/PMIS.iml" filepath="$PROJECT_DIR$/PMIS/PMIS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SigleMode/SigleMode.iml" filepath="$PROJECT_DIR$/SigleMode/SigleMode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SigleMode/project3.iml" filepath="$PROJECT_DIR$/SigleMode/project3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projuect3/projuect3.iml" filepath="$PROJECT_DIR$/projuect3/projuect3.iml" />
+    </modules>
+  </component>
+</project>
