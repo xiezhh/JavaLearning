@@ -8,7 +8,6 @@
 package domain;
 
 import service.Equipment;
-import service.Status;
 
 public class Architect extends Designer{
     private int stock;
@@ -16,8 +15,8 @@ public class Architect extends Designer{
     public Architect() {
     }
 
-    public Architect(int id, String name, int age, double salary, int memberId, Status status, Equipment equipment, double bonus, int stock) {
-        super(id, name, age, salary, memberId, status, equipment, bonus);
+    public Architect(int id, String name, int age, double salary,  Equipment equipment, double bonus, int stock) {
+        super(id, name, age, salary, equipment, bonus);
         this.stock = stock;
     }
 
@@ -27,5 +26,15 @@ public class Architect extends Designer{
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String getDetailsForTeam(){
+        return getMemberDetails() + "\t架构师\t" + getStock();
+    }
+
+    @Override
+    public String toString() {
+        return getDetails() + "\t设计师\t" + getStatus() + "\t" + getBonus() + "\t" + getStock() + "\t" + getEquipment().getDescription();
     }
 }

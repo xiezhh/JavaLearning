@@ -14,9 +14,11 @@ public class PC implements Equipment {
     private String display;
 
     public PC() {
+        super();
     }
 
     public PC(String model, String display) {
+        super();
         this.model = model;
         this.display = display;
     }

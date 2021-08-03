@@ -18,7 +18,7 @@ public class Programmer extends Employee{
     public Programmer() {
     }
 
-    public Programmer(int id, String name, int age, double salary, int memberId, Status status, Equipment equipment) {
+    public Programmer(int id, String name, int age, double salary, Equipment equipment) {
         super(id, name, age, salary);
         this.memberId = memberId;
         this.status = status;
@@ -47,5 +47,18 @@ public class Programmer extends Employee{
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+    }
+
+    public String getDetailsForTeam(){
+        return getMemberDetails() + "\t程序员";
+    }
+
+    protected String getMemberDetails() {
+        return getMemberId() + "\t" + getDetails();
+    }
+
+    @Override
+    public String toString() {
+        return getDetails() + "\t程序员\t" + status  + "\t\t\t" + equipment.getDescription();
     }
 }

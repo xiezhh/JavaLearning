@@ -20,4 +20,8 @@ public class Status {
         return NAME;
     }
 
+    @Override
+    public String toString() {
+        return NAME;
+    }
 }

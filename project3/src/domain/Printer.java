@@ -15,9 +15,11 @@ public class Printer implements Equipment {
     private String type;
 
     public Printer() {
+        super();
     }
 
     public Printer(String name, String type) {
+        super();
         this.name = name;
         this.type = type;
     }

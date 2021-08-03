@@ -15,10 +15,12 @@ public class Notebook implements Equipment {
 
 
     public Notebook() {
+        super();
     }
 
 
     public Notebook(String model, double price) {
+        super();
         this.model = model;
         this.price = price;
     }

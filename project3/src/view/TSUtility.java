@@ -7,8 +7,7 @@
  **/
 package view;
 
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.Scanner;
 
 
 public class TSUtility {
@@ -65,7 +64,7 @@ public class TSUtility {
 
     private static String readKeyBoard(int limit, boolean blankReturn){
         String line = "";
-        while(scanner.hasNext()){
+        while(scanner.hasNextLine()){
             line = scanner.nextLine();
             if(line.length() == 0){
                 if(blankReturn){

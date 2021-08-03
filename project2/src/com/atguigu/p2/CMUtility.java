@@ -1,7 +1,4 @@
-﻿package com.atguigu.p2;
-
-
-import java.util.*;
+﻿import java.util.*;
 /**
 CMUtility工具类：
 将不同的功能封装为方法，就是可以直接通过调用方法使用它的功能，而无需考虑具体的功能实现细节。
@@ -16,10 +13,12 @@ public class CMUtility {
         for (; ; ) {
             String str = readKeyBoard(1, false);
             c = str.charAt(0);
-            if (c != '1' && c != '2' && 
+            if (c != '1' && c != '2' &&
                 c != '3' && c != '4' && c != '5') {
                 System.out.print("选择错误，请重新输入：");
-            } else break;
+            } else {
+                break;
+            }
         }
         return c;
     }
