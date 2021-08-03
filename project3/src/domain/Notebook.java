@@ -56,6 +56,6 @@ public class Notebook implements Equipment {
 
     @Override
     public String getDescription() {
-        return null;
+        return  model + "(" + price + ")";
     }
 }

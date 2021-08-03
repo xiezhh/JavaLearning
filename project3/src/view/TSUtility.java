@@ -15,12 +15,11 @@ public class TSUtility {
 
     public static char readMenuSelection(){
         char c;
-        String str = readKeyBoard(1,false);
-        c = str.charAt(0);
        for(;;){
+           String str = readKeyBoard(1,false);
+           c = str.charAt(0);
            if(c != '1' && c != '2' && c != '3' && c != '4'){
                 System.out.print("输入有误，请重新输入");
-                continue;
            }else {
                break;
            }
@@ -78,6 +77,7 @@ public class TSUtility {
                 System.out.print("输入长度（不大于" + limit + "）错误，请重新输入：");
                 continue;
             }
+            break;
         }
         return line;
     }
