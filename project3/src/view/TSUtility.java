@@ -31,7 +31,7 @@ public class TSUtility {
 
     public static void readReturn(){
         System.out.print("按回车键继续");
-        readKeyBoard(100,false);
+        readKeyBoard(100,true);
     }
 
 

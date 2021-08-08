@@ -28,7 +28,7 @@ public class TeamView {
             System.out.println();
             switch(key){
                 case '1':
-                    listAllEmployees();
+                    listTeam();
                     break;
                 case '2':
                     addMember();
@@ -56,6 +56,7 @@ public class TeamView {
             Employee e = listSvc.getEmployee(id);
             teamSvc.addMember(e);
             System.out.print("添加成功");
+            listTeam();
         } catch (TeamException e) {
             System.out.println("添加失败");
         }
@@ -81,7 +82,7 @@ public class TeamView {
     }
 
     private void listAllEmployees() {
-        System.out.println("\\n-------------------------------开发团队调度软件--------------------------------\\n");
+        System.out.println("\n-------------------------------开发团队调度软件--------------------------------\n");
 //        Programmer[] team = teamSvc.getTeam();
         Employee[] employees = listSvc.getAllEmployees();
         if(employees.length == 0){

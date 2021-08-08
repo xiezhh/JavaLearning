@@ -104,7 +104,7 @@ public class TeamService {
             throw new TeamException("没有找到该成员，无法删除");
         }
 
-        for (int i = 0; i < total; i++) {
+        for (int i = n+1; i < total; i++) {
             team[i - 1] = team[i];
             team[--total] = null;
         }
