@@ -26,7 +26,7 @@ public class CommonQueryForAnyTable {
         List<Order> instance = getInstance(Order.class, sql, 3);
         // 下面这句没学过
         instance.forEach(System.out::println);
-
+        //添加了git之后上传一次代码
     }
 
     public <T> List<T> getInstance(Class<T> clazz, String sql, Object ...args) {
