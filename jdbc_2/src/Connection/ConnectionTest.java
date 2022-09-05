@@ -17,4 +17,6 @@ public class ConnectionTest {
         Connection conn = JDBCUtil.getConnection();
         System.out.println(conn);
     }
+
+
 }
