@@ -1,19 +1,22 @@
-/*
+package util;/*
  *@Description:
  *@author:xiezhh
  *@create:2022-09-07 23:51
  *@Version 1.0
  */
-package dao;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
 public class JDBCUtil {
     public static Connection getConnection() throws Exception {
+
+        String file = Thread.currentThread().getContextClassLoader().getResource("JDBC.Properties").getFile();
+        //InputStream is = ClassLoader.getSystemResourceAsStream("JDBC.Properties");
+        InputStream is = new FileInputStream(file);
         Properties pros = new Properties();
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("JDBC.Properties");
         pros.load(is);
         String url = pros.getProperty("url");
         String user = pros.getProperty("user");
