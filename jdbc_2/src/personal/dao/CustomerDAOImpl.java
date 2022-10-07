@@ -6,11 +6,10 @@
  */
 package personal.dao;
 
-import Bean.Customer;
+import bean.Customer;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerDAOImpl  extends  BaseDAO implements CustomerDAO{

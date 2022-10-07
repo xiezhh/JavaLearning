@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div><p>hello world.</p></div>
+    <p>这是另外一段话</p>
+    <form  action="/update.do" method="post">
+        <input type="hidden" th:value="${fruit.id}" name="id">
+        <span>名称：</span><input th:value="${fruit.name}" type="text" name ="name"><br>
+        <span>单价：</span><input th:value="${fruit.price}" type="text" name="price"><br>
+        <span>库存：</span><input th:value="${fruit.fCount}" type="text" name="fCount"><br>
+        <span>备注：</span><input th:value="${fruit.remark}" type="text" name="remark"><br>
+        <input type="submit" value = "修改">
+    </form>
+</body>
+</html>

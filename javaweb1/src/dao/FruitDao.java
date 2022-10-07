@@ -1,6 +1,6 @@
 package dao;
 
-import Bean.Fruit;
+import bean.Fruit;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,9 +11,11 @@ public interface FruitDao {
 
     void update(Connection connection,Fruit fruit);
 
-    Fruit getFruitById(Connection connection,int i);
+    Fruit getFruitById(Connection connection,long i);
 
     List<Fruit> getAllFruit(Connection connection);
 
     long getCount(Connection connection);
+
+    void deleteById(Connection connection,long id);
 }

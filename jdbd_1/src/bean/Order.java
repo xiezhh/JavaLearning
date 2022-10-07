@@ -4,7 +4,7 @@
  *@create:2022-08-30 23:38
  *@Version 1.0
  */
-package Bean;
+package bean;
 
 import java.sql.Date;
 

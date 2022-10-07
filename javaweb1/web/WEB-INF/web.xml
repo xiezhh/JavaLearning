@@ -12,4 +12,14 @@
             <servlet-name>AddServlet</servlet-name>
             <url-pattern>/add</url-pattern>
         </servlet-mapping>
+
+    <context-param>
+        <param-name>view-prefix</param-name>
+        <param-value>/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view-suffix</param-name>
+        <param-value>.html</param-value>
+    </context-param>
+
 </web-app>

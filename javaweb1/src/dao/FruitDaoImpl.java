@@ -6,10 +6,9 @@
  */
 package dao;
 
-import Bean.Fruit;
+import bean.Fruit;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 public class FruitDaoImpl extends BaseDao implements FruitDao{
@@ -26,7 +25,7 @@ public class FruitDaoImpl extends BaseDao implements FruitDao{
     }
 
     @Override
-    public Fruit getFruitById(Connection connection, int i) {
+    public Fruit getFruitById(Connection connection, long i) {
         String sql = "select id,name,price,fCount,remark from fruit where id=?";
         return getInstance(connection,Fruit.class,sql,i);
     }
@@ -35,6 +34,7 @@ public class FruitDaoImpl extends BaseDao implements FruitDao{
     public List<Fruit> getAllFruit(Connection connection) {
         String sql = "select id,name,price,fCount,remark from fruit";
         List<Fruit> list = getForList(connection,Fruit.class,sql);
+        //List<Fruit> list = getForList(connection,Fruit.class,sql);
         return list;
     }
 
@@ -42,5 +42,11 @@ public class FruitDaoImpl extends BaseDao implements FruitDao{
     public long getCount(Connection connection) {
         String sql = "select count(1) from fruit";
         return getValue(connection,sql);
+    }
+
+    @Override
+    public void deleteById(Connection connection, long id) {
+        String sql = "delete from fruit where id = ?";
+        update(connection,sql,id);
     }
 }

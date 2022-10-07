@@ -6,7 +6,7 @@
  */
 package PreparedStatementTest;
 
-import Bean.Customer;
+import bean.Customer;
 import org.junit.Test;
 import personal.jdbc.util.JDBCUtil;
 

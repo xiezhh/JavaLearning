@@ -1,30 +1,31 @@
 package servlets;
 
-import Bean.Fruit;
+import bean.Fruit;
 import dao.FruitDaoImpl;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 import util.JDBCUtil;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet {
+@WebServlet("/index")
+public class IndexServlet extends ViewBaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             Connection connection = JDBCUtil.getConnection();
             FruitDaoImpl fruitDao = new FruitDaoImpl();
-            List<Fruit> allFruit = fruitDao.getAllFruit(connection);
-            System.out.printf(allFruit.toString());
+            List<Fruit> fruitList = fruitDao.getAllFruit(connection);
+            System.out.printf(fruitList.toString());
             HttpSession session = req.getSession();
-            session.setAttribute("fruitList",allFruit);
+            session.setAttribute("fruitList",fruitList);
+            super.processTemplate("index",req,resp);
         } catch (Exception e) {
             e.printStackTrace();
         }

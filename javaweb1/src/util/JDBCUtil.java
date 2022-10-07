@@ -69,4 +69,14 @@ public class JDBCUtil {
             e.printStackTrace();
         }
     }
+
+    public static void CloseConnection(Connection connection) {
+        try {
+            if(connection != null){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

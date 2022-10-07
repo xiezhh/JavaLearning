@@ -4,17 +4,17 @@
  *@create:2022-09-07 23:34
  *@Version 1.0
  */
-package Bean;
+package bean;
 
 public class Fruit {
-    private int id;
+    private long id;
     private String name;
     public double price;
     public double fCount;
     public String remark;
 
 
-    public Fruit(int id, String name, double price, double fCount, String remark) {
+    public Fruit(long id, String name, double price, double fCount, String remark) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -25,7 +25,7 @@ public class Fruit {
     public Fruit() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

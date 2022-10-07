@@ -6,8 +6,8 @@
  */
 package PreparedStatementTest;
 
-import Bean.Customer;
-import Bean.Order;
+import bean.Customer;
+import bean.Order;
 import org.junit.Test;
 import personal.jdbc.util.JDBCUtil;
 

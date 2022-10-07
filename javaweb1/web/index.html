@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--提示-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script language="JavaScript" src="./js/index.js"></script>
 </head>
 <body>
-    <div><p>hello world.</p></div>
-    <p>这是另外一段话</p>
-    <form  action="add" method="post">
-        <span>名称：</span><input type="text" name ="name"><br>
-        <span>单价：</span><input type="text" name="price"><br>
-        <span>库存：</span><input type="text" name="fCount"><br>
-        <span>备注：</span><input type="text" name="remark"><br>
-        <input type="submit" value = "添加">
-    </form>
+<div class="main-title">水果管理系统</div>
+<table>
+    <tr>
+        <th>名称2</th>
+        <th>单价</th>
+        <th>库存</th>
+        <th>操作</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(session.fruitList)}">
+        <td colspan="4"> 对不起，库存为空！</td>
+    </tr>
+    <tr th:unless="${#lists.isEmpty(session.fruitList)}" th:each="fruit:${session.fruitList}">
+<!--        <td ><a th:href="@{'/edit.do?id='+${fruit.id}}" th:text="${fruit.name}">苹果</a></td>-->
+        <td ><a th:href="@{/edit.do(id=${fruit.id})}" th:text="${fruit.name}">苹果</a></td>
+        <td th:text="${fruit.price}">20</td>
+        <td th:text="${fruit.fCount}">10</td>
+        <td th:text="${fruit.remark}">10</td>
+        <td><a href="" th:onclick="|deleteFruit(${fruit.id})|">删除</a></td>
+    </tr>
+
+
+
+</table>
 </body>
 </html>

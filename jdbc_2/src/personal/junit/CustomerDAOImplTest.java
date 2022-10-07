@@ -1,18 +1,15 @@
 package personal.junit;
 
-import Bean.Customer;
+import bean.Customer;
 import org.junit.Test;
 import personal.jdbc.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import personal.dao.CustomerDAOImpl;
-
-import static org.junit.Assert.*;
 
 public class CustomerDAOImplTest {
     private CustomerDAOImpl dao = new CustomerDAOImpl();

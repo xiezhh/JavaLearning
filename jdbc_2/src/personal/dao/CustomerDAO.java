@@ -1,6 +1,6 @@
 package personal.dao;
 
-import Bean.Customer;
+import bean.Customer;
 
 import java.sql.Connection;
 import java.sql.Date;

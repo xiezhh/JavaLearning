@@ -6,7 +6,6 @@
  */
 package dao;
 
-
 import util.JDBCUtil;
 
 import java.lang.reflect.Field;
@@ -23,7 +22,7 @@ public abstract class BaseDao {
             for(int i=0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
             }
-           return ps.executeUpdate();
+            return ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -98,12 +97,14 @@ public abstract class BaseDao {
                 ps.setObject(i+1,args[i]);
             }
             rs = ps.executeQuery();
-            List<T> list = new ArrayList<>();
+            List<T> list = new ArrayList<T>();
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int columnCount = rsmd.getColumnCount();
             while(rs.next()){
-                ResultSetMetaData rsmd = rs.getMetaData();
                 T t = clazz.newInstance();
-                int columnCount = rsmd.getColumnCount();
-                for(int i =0;i<columnCount;i++){
+
+                for(int i = 0;i<columnCount;i++){
                     Object columnValue = rs.getObject(i+1);
                     String columnLabel = rsmd.getColumnLabel(i+1);
                     Field field = clazz.getDeclaredField(columnLabel);
@@ -112,6 +113,7 @@ public abstract class BaseDao {
                 }
                 list.add(t);
             }
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
