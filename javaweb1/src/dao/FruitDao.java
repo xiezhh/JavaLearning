@@ -7,15 +7,17 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface FruitDao {
-    void insert(Connection connection, Fruit fruit) throws SQLException;
+    void insert( Fruit fruit) throws SQLException;
 
-    void update(Connection connection,Fruit fruit);
+    void update(Fruit fruit);
 
-    Fruit getFruitById(Connection connection,long i);
+    Fruit getFruitById(long i);
 
-    List<Fruit> getAllFruit(Connection connection);
+    List<Fruit> getAllFruit();
 
-    long getCount(Connection connection);
+    List<Fruit> getAllFruit(int pageNo);
 
-    void deleteById(Connection connection,long id);
+    long getCount();
+
+    void deleteById(long id);
 }

@@ -9,11 +9,13 @@
 </head>
 <body>
 <div class="main-title">水果管理系统</div>
+<div><a th:href="@{/add.html}">添加库存信息</a></div>
 <table>
     <tr>
         <th>名称2</th>
         <th>单价</th>
         <th>库存</th>
+        <th>备注</th>
         <th>操作</th>
     </tr>
     <tr th:if="${#lists.isEmpty(session.fruitList)}">
@@ -27,9 +29,15 @@
         <td th:text="${fruit.remark}">10</td>
         <td><a href="" th:onclick="|deleteFruit(${fruit.id})|">删除</a></td>
     </tr>
-
-
-
 </table>
+    <div>
+<!--        <a href="">首页</a>-->
+        <input type="button" value="首页" th:onclick="|page(1)|" th:disabled="${session.pageNo}==1" />
+        <input type="button" value="上一页" th:onclick="|page(${session.pageNo}-1)|" th:disabled="${session.pageNo}==1 "/>
+        <input type="button" value="下一页" th:onclick="|page(${session.pageNo}+1)|" th:disabled="${session.pageNo}==${session.pageCount}"/>
+        <input type="button" value="尾页" th:onclick="|page(${session.pageCount})|" th:disabled="${session.pageNo}==${session.pageCount}"  />
+<!--        <a href="">下一页</a>-->
+<!--        <a href="">尾页</a>-->
+    </div>
 </body>
 </html>

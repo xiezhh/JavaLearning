@@ -35,16 +35,10 @@ public class UpdateServlet extends ViewBaseServlet{
         String remark = req.getParameter("remark");
         Fruit fruit = new Fruit(id,name,price,fCount,remark) ;
 
-        Connection connection =null;
-        try {
-            connection = JDBCUtil.getConnection();
-            fruitDaoImpl.update(connection,fruit);
-            //req.getRequestDispatcher("index",req,resp);
-            resp.sendRedirect("index");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.CloseConnection(connection);
-        }
+    //  connection = JDBCUtil.getConnection();
+        fruitDaoImpl.update(fruit);
+        //req.getRequestDispatcher("index",req,resp);
+        resp.sendRedirect("index");
+
     }
 }

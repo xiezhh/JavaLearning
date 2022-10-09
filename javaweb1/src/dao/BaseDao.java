@@ -15,19 +15,20 @@ import java.util.List;
 
 public abstract class BaseDao {
 
-    public int update(Connection connection,String sql,Object ...args) {
+    public int update(String sql,Object ...args) {
+        Connection connection = null;
         PreparedStatement ps = null;
         try {
+            connection = JDBCUtil.getConnection();
             ps = connection.prepareStatement(sql);
             for(int i=0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
             }
             return ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.CloseConnection(connection,ps);
-
         }
         return 0;
     }
@@ -36,20 +37,22 @@ public abstract class BaseDao {
      * @description 通用删除、更新操作；返回0，说明未执行操作
      * @author xiezhh snail915@qq.com
      * @date 2022/9/9 10:06
-     * @param connection
+     * @param
      * @param sql
      * @param args
      * @return int
      */
-    public int getInstance(Connection connection, String sql,Object ...args)  {
+    public int getInstance(String sql,Object ...args)  {
+        Connection connection =null;
         PreparedStatement ps = null;
         try {
+            connection = JDBCUtil.getConnection();
             ps = connection.prepareStatement(sql);
             for(int i = 0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
             }
             return ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.CloseConnection(connection,ps);
@@ -58,10 +61,12 @@ public abstract class BaseDao {
         return 0;
     }
 
-    public <T>T getInstance(Connection connection,Class<T> clazz ,String sql,Object ...args)  {
+    public <T>T getInstance(Class<T> clazz ,String sql,Object ...args)  {
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Connection connection = null;
         try {
+            connection = JDBCUtil.getConnection();
             ps = connection.prepareStatement(sql);
             for(int i=0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
@@ -88,10 +93,12 @@ public abstract class BaseDao {
         return null;
     }
 
-    public <T> List<T> getForList(Connection connection,Class<T> clazz,String sql,Object ...args)  {
+    public <T> List<T> getForList(Class<T> clazz,String sql,Object ...args)  {
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Connection connection = null;
         try {
+            connection = JDBCUtil.getConnection();
             ps = connection.prepareStatement(sql);
             for(int i=0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
@@ -131,10 +138,12 @@ public abstract class BaseDao {
      * @param args
      * @return E
      */
-    public <E> E getValue(Connection connection,String sql,Object ...args)  {
+    public <E> E getValue(String sql,Object ...args)  {
         PreparedStatement ps= null;
         ResultSet rs = null;
+        Connection connection = null;
         try {
+            connection = JDBCUtil.getConnection();
             ps = connection.prepareStatement(sql);
             for(int i=0;i<args.length;i++){
                 ps.setObject(i+1,args[i]);
@@ -144,7 +153,7 @@ public abstract class BaseDao {
                 E e = (E) rs.getObject(1);
                 return e;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.CloseConnection(connection,ps);

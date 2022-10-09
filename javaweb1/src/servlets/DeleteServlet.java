@@ -24,23 +24,19 @@ public class DeleteServlet extends ViewBaseServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = null;
-        try {
-            connection = JDBCUtil.getConnection();
-            String idStr = req.getParameter("id");
-            if(StringUtil.isNotEmpty(idStr)){
-                long id = Long.parseLong(idStr);
-                fruitDaoImpl.deleteById(connection,id);
-                // HttpSession httpSession = req.getSession();
-                // httpSession.setAttribute("fruit",fruit);
-                //req.setAttribute("fruit",fruit);
-                //super.processTemplate("edit",req,resp);
-                resp.sendRedirect("index");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.CloseConnection(connection);
+        //Connection connection = null;
+
+           // connection = JDBCUtil.getConnection();
+        String idStr = req.getParameter("id");
+        if(StringUtil.isNotEmpty(idStr)){
+            long id = Long.parseLong(idStr);
+            fruitDaoImpl.deleteById(id);
+            // HttpSession httpSession = req.getSession();
+            // httpSession.setAttribute("fruit",fruit);
+            //req.setAttribute("fruit",fruit);
+            //super.processTemplate("edit",req,resp);
+            resp.sendRedirect("index");
         }
+
     }
 }
