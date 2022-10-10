@@ -17,7 +17,11 @@ public interface FruitDao {
 
     List<Fruit> getAllFruit(int pageNo);
 
+    List<Fruit> getAllFruit(String keyword,int pageNo);
+
     long getCount();
+
+    long getCount(String keyword);
 
     void deleteById(long id);
 }

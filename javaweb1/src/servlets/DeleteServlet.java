@@ -28,7 +28,7 @@ public class DeleteServlet extends ViewBaseServlet{
 
            // connection = JDBCUtil.getConnection();
         String idStr = req.getParameter("id");
-        if(StringUtil.isNotEmpty(idStr)){
+         if(StringUtil.isNotEmpty(idStr)){
             long id = Long.parseLong(idStr);
             fruitDaoImpl.deleteById(id);
             // HttpSession httpSession = req.getSession();
@@ -37,6 +37,5 @@ public class DeleteServlet extends ViewBaseServlet{
             //super.processTemplate("edit",req,resp);
             resp.sendRedirect("index");
         }
-
     }
 }

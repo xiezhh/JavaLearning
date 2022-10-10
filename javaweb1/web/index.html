@@ -9,6 +9,11 @@
 </head>
 <body>
 <div class="main-title">水果管理系统</div>
+<form th:action="@{/index}" method="post">
+    <input type="hidden" name="operation" value="search">
+    请输入关键字查询：<input type="text" name="keyword">
+    <input type="submit" value="查询" >
+</form>
 <div><a th:href="@{/add.html}">添加库存信息</a></div>
 <table>
     <tr>

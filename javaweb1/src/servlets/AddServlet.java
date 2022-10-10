@@ -32,7 +32,6 @@ public class AddServlet extends ViewBaseServlet {
         double fCount = Double.parseDouble(fCountStr);
         String remark = req.getParameter("remark");
 
-
         Fruit fruit = new Fruit(1,name,price,fCount,remark );
         System.out.printf(fruit.toString());
 
@@ -41,7 +40,5 @@ public class AddServlet extends ViewBaseServlet {
         fruitDao.insert(fruit);
 
         resp.sendRedirect("index");
-
-
     }
 }

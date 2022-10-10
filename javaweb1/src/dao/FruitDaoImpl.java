@@ -46,9 +46,22 @@ public class FruitDaoImpl extends BaseDao implements FruitDao{
     }
 
     @Override
+    public List<Fruit> getAllFruit(String keyword, int pageNo) {
+        String sql = "select id ,name,price,fCount,remark  from fruit  where name like ? limit ?,?";
+        List<Fruit> list = getForList(Fruit.class,sql,"%"+keyword+"%",(pageNo-1)*5,5);
+        return list;
+    }
+
+    @Override
     public long getCount() {
         String sql = "select count(1) from fruit";
         return getValue(sql);
+    }
+
+    @Override
+    public long getCount(String keyword) {
+        String sql = "select count(1) from fruit where name like ?";
+        return getValue(sql,"%"+keyword+"%");
     }
 
     @Override
